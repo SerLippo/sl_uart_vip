@@ -43,6 +43,7 @@ class uart_monitor extends uvm_monitor;
       join_any
       disable fork;
       if(!sbe) begin
+        trans_collected.lcr = cfg.lcr;
         trans_collected.data = rx_data;
         trans_collected.pe = pe;
         trans_collected.fe = fe;
@@ -58,11 +59,11 @@ class uart_monitor extends uvm_monitor;
     sbe = 0;
     trans_collected.sbe = 0;
     while(vif.sdata==1'b1 || vif.sdata==1'bx)
-      @(posedge vif.clk);
+      wait_posedge_divised_clk(divisor);
     start_bit = 1;
     start_bit = 99;
-    while(sbe!=1 || i<8) begin
-      @(posedge vif.clk);
+    while(sbe!=1 && i<8) begin
+      wait_posedge_divised_clk(divisor);
       if(vif.sdata==1'b1) begin
         `uvm_warning("UART_MON", "False start bit detected!")
         start_bit = 88;

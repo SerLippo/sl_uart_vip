@@ -22,22 +22,22 @@ class uart_transaction extends uvm_sequence_item;
   rand bit pe;
 
   constraint baudrate_divide_c{
-    baud_divisor == 16'h01;
+    soft baud_divisor == 16'h01;
   }
 
   constraint error_dists_c{
-    fe dist {1:=1, 0:=99};
-    pe dist {1:=1, 0:=99};
-    sbe dist {1:=1, 0:=99};
+    soft fe dist {1:=1, 0:=99};
+    soft pe dist {1:=1, 0:=99};
+    soft sbe dist {1:=1, 0:=99};
   }
 
   constraint clks_c{
-    delay inside {[0:20]};
-    sbe_clks inside {[1:4]};
+    soft delay inside {[0:20]};
+    soft sbe_clks inside {[1:4]};
   }
 
   constraint lcr_setup_c{
-    lcr == 8'h3f;
+    soft lcr == 8'h3f;
   }
 
   `uvm_object_utils_begin(uart_transaction)

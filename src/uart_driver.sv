@@ -81,7 +81,7 @@ class uart_driver extends uvm_driver#(uart_transaction);
         vif.sdata = 0;
       bit_period(divisor);
       if(!req.fe) begin
-        if(pkt.lcr[2]) begin
+        if(req.lcr[2]) begin
           if(req.lcr[1:0]==2'b00) begin
             repeat(8)
               wait_posedge_divised_clk(divisor);
