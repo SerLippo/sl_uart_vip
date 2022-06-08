@@ -49,7 +49,6 @@ class uart_burst_seq extends uvm_sequence#(uart_transaction);
         }
       };
       finish_item(req);
-      req.print();
       get_response(rsp);
     end
     `uvm_info("UART_BURST_SEQ", "----- Finishing uart_burst_seq -----", UVM_LOW)

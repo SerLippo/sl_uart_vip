@@ -17,7 +17,6 @@ class uart_single_hseq extends uart_base_hseq;
     start_item(req);
     req.randomize();
     finish_item(req);
-    req.print();
     get_response(rsp);
     seq = uart_burst_seq::type_id::create("seq");
     seq.randomize() with {size==10;};

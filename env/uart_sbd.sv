@@ -85,10 +85,14 @@ class uart_sbd extends uvm_component;
     else
       if(is_tx) begin
         `uvm_error("SBD", $sformatf("Compare Failed for the tx %0d th time, total %0d th time!", tx_count, total_count))
+        req.print();
+        rsp.print();
         tx_count++;
       end
       else begin
         `uvm_error("SBD", $sformatf("Compare Failed for the rx %0d th time, total %0d th time!", rx_count, total_count))
+        req.print();
+        rsp.print();
         rx_count++;
       end
     total_count++;
