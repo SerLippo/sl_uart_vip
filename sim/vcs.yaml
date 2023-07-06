@@ -1,0 +1,12 @@
+- vcs: vcs_command
+  flist: >
+    +incdir+$REPO_BASE
+    +incdir+$REPO_BASE/{src,env,seq_lib,tb,tests}
+    $REPO_BASE/src/uart_pkg.sv
+    $REPO_BASE/env/uart_test_pkg.sv
+    $REPO_BASE/tb/uart_tb.sv
+  top: uart_tb
+
+- test: uart_single_test
+
+- test: uart_dual_test
